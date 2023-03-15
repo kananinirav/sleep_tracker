@@ -29,9 +29,14 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  # A gem that allows you to clean the database before running tests.
+  gem 'database_cleaner'
+  # A gem that allows you to write tests.
+  gem 'shoulda-matchers'
 end

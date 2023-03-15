@@ -1,24 +1,10 @@
-# README
+# Sleep Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies and Gems used
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby on Rails (Ruby: 3.2.0, Rails: 7.0.4)
+- Test Framework (Rspec)
+- Factory_bot_rails
+- PostgreSQL@14
+- Database_cleaner (clean the database before running tests)
+- shoulda-matchers (Simple one-liner tests for common Rails functionality)
