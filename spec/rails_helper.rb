@@ -63,4 +63,6 @@ RSpec.configure do |config|
   require 'support/factory_bot'
   require 'support/shoulda_matchers'
   require 'support/database_cleaner'
+  require 'support/request_spec_helper'
+  config.include RequestSpecHelper, type: :request
 end
