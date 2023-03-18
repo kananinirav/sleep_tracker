@@ -32,13 +32,13 @@ class SleepTrackingManager < ApplicationService
   def clock_in
     last_sleep_record = @current_user.sleep_trackings.last
     if last_sleep_record.present? && last_sleep_record&.clock_out.nil?
-      service_response = { message: 'you need to clock out first' }
-    else
-      @current_user.sleep_trackings.create(clock_in: Time.zone.now)
-      saved_records = @current_user.sleep_trackings.order(created_at: :desc)
-      service_response = { message: 'clocked in successfully', data: saved_records }
+      @service_result.data = { message: 'You need to clock out first' }
+      return
     end
-    @service_result.data = service_response
+
+    @current_user.sleep_trackings.create(clock_in: Time.zone.now)
+    saved_records = @current_user.sleep_trackings.order(created_at: :desc)
+    @service_result.data = { message: 'Clocked in successfully', data: saved_records }
   end
 
   ##
@@ -50,9 +50,9 @@ class SleepTrackingManager < ApplicationService
     if last_sleep_record.present? && last_sleep_record.clock_out.nil?
       current_time = Time.zone.now
       last_sleep_record.update!(clock_out: current_time, sleep_duration: (current_time - last_sleep_record.clock_in))
-      service_response = { message: 'clocked out successfully' }
+      service_response = { message: 'Clocked out successfully' }
     else
-      service_response = { message: 'you need to clock in first' }
+      service_response = { message: 'You need to clock in first' }
     end
     @service_result.data = service_response
   end
@@ -61,7 +61,11 @@ class SleepTrackingManager < ApplicationService
     friends_sleep_records = @current_user.following_users.friends_last_week_sleep_trackings
 
     sleep_data = friends_sleep_records.map do |friend|
-      { user_id: friend.id, user_name: friend.user_name, sleep_trackings: sleep_trackings_json(friend.sleep_trackings) }
+      {
+        user_id: friend.id,
+        user_name: friend.user_name,
+        sleep_trackings: sleep_trackings_json(friend.sleep_trackings)
+      }
     end
     @service_result.data = { data: sleep_data }
   end

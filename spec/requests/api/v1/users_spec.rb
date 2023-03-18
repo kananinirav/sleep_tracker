@@ -20,7 +20,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
         expected_response = {
           'success' => false,
-          'message' => 'please check required fields',
+          'message' => 'Please check required fields',
           'errors' => [
             "User name can't be blank"
           ]

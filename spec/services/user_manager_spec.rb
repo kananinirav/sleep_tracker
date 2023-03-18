@@ -11,7 +11,7 @@ RSpec.describe UserManager do
         let(:service_result) { described_class.call(options) }
         it 'returns a ServiceResult with success status and data' do
           expect(service_result.is_success).to eq true
-          expect(service_result.data).to include(message: 'user successfully created', data: user_obj)
+          expect(service_result.data).to include(message: 'User successfully created', data: user_obj)
         end
       end
 
@@ -22,7 +22,7 @@ RSpec.describe UserManager do
 
         it 'returns a ServiceResult with failure status and error messages' do
           expect(service_result.is_success).to eq false
-          expect(service_result.data).to include(message: 'please check required fields', errors: user_obj.errors.full_messages)
+          expect(service_result.data).to include(message: 'Please check required fields', errors: user_obj.errors.full_messages)
         end
       end
     end

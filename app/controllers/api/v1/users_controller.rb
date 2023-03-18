@@ -6,19 +6,19 @@ class Api::V1::UsersController < ApplicationController
   def create
     user_obj = User.new(user_params)
     service = UserManager.call({ actions: 'create', user_obj: user_obj })
-    crete_response_from_service(service, :ok)
+    crete_response_from_service(service)
   end
 
   def follow
     service = UserFriendshipManager.call({ actions: 'follow', following_user_id: params[:following_id],
                                            current_user: current_user })
-    crete_response_from_service(service, :ok)
+    crete_response_from_service(service)
   end
 
   def unfollow
     service = UserFriendshipManager.call({ actions: 'un-follow', following_user_id: params[:following_id],
                                            current_user: current_user })
-    crete_response_from_service(service, :ok)
+    crete_response_from_service(service)
   end
 
   private

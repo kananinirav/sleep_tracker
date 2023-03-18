@@ -23,10 +23,10 @@ class UserManager < ApplicationService
 
   def create
     if @user_obj.save
-      @service_result.data = { message: 'user successfully created', data: @user_obj }
+      @service_result.data = { message: 'User successfully created', data: @user_obj }
     else
       @service_result.is_success = false
-      @service_result.data = { message: 'please check required fields', errors: @user_obj.errors.full_messages }
+      @service_result.data = { message: 'Please check required fields', errors: @user_obj.errors.full_messages }
     end
   end
 end

@@ -69,7 +69,7 @@ module ApiResponse
   # Args:
   #   service_obj: The service object that you want to create a response from.
   #   status: The HTTP status code you want to return.
-  def crete_response_from_service(service_obj, status)
+  def crete_response_from_service(service_obj, status = :ok)
     if service_obj.is_success
       success_response(service_obj.data[:message], service_obj.data[:data], status)
     else

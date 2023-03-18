@@ -25,7 +25,7 @@ RSpec.describe 'Api::V1::SleepTrackings', type: :request do
         post clock_in_api_v1_user_sleep_trackings_path(current_user.id), as: :json
         expected_response = {
           'success' => true,
-          'message' => 'you need to clock out first',
+          'message' => 'You need to clock out first',
           'data' => nil
         }
         expect(response).to have_http_status(:ok)
