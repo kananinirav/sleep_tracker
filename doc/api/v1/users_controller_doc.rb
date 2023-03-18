@@ -6,7 +6,7 @@ module Api
     module UsersControllerDoc
       extend Apipie::DSL::Concern
 
-      api :POST, '/api/v1/users', 'Create User'
+      api :POST, '/v1/users', 'Create User'
       param :user, Hash, desc: 'User Object' do
         param :user_name, String, desc: 'User Name', required: true
       end
@@ -47,7 +47,7 @@ module Api
         # for api doc
       end
 
-      api :POST, '/api/v1/users/:user_id/follow/:following_id', 'Follow User'
+      api :POST, '/v1/users/:user_id/follow/:following_id', 'Follow User'
       param :user_id, :number, desc: 'user_id of the requested user', required: true
       param :following_id, :number, desc: 'user id you want to follow user', required: true
       example <<-EDOC
@@ -87,7 +87,7 @@ module Api
         # for api doc
       end
 
-      api :DELETE, '/api/v1/users/:user_id/unfollow/:following_id', 'Un-Follow User'
+      api :DELETE, '/v1/users/:user_id/unfollow/:following_id', 'Un-Follow User'
       param :user_id, :number, desc: 'user_id of the requested user', required: true
       param :following_id, :number, desc: 'user id you want to follow user', required: true
       example <<-EDOC

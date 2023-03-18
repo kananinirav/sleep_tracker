@@ -6,7 +6,7 @@ module Api
     module SleepTrackingsControllerDoc
       extend Apipie::DSL::Concern
 
-      api :GET, '/api/v1/users/:user_id/sleep_trackings', 'User Friends Last Week Sleep Tracking Records'
+      api :GET, '/v1/users/:user_id/sleep_trackings', 'User Friends Last Week Sleep Tracking Records'
       param :user_id, :number, desc: 'user_id of the requested user', required: true
       example <<-EDOC
       $ curl --location 'http://localhost:3000/api/v1/users/:user_id/sleep_trackings'
@@ -52,7 +52,7 @@ module Api
         # for api doc
       end
 
-      api :POST, '/api/v1/users/:user_id/sleep_trackings/clock_in', 'Clock In Event'
+      api :POST, '/v1/users/:user_id/sleep_trackings/clock_in', 'Clock In Event'
       param :user_id, :number, desc: 'user_id of the requested user', required: true
       example <<-EDOC
       $ curl --location --request POST 'http://localhost:3000/api/v1/users/:user_id/sleep_trackings/clock_in'
@@ -102,7 +102,7 @@ module Api
         # for api doc
       end
 
-      api :PATCH, '/api/v1/users/:user_id/sleep_trackings/clock_out', 'Clock Out Event'
+      api :PATCH, '/v1/users/:user_id/sleep_trackings/clock_out', 'Clock Out Event'
       param :user_id, :number, desc: 'user_id of the requested user', required: true
       example <<-EDOC
       $ curl --location --request PATCH 'http://localhost:3000/api/v1/users/:user_id/sleep_trackings/clock_out'
